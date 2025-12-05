@@ -85,3 +85,23 @@ flutter run
 1.  **Create Project**: Go to [Supabase](https://supabase.com/) and create a new project.
 2.  **Enable Auth**: Go to `Authentication -> Providers` and enable **Email/Password**.
 3.  **Get Keys**: Go to `Settings -> API` to find your `Project URL` and `anon` public key. Paste these into your `.env` file.
+
+### Initialization Configuration
+
+The application authenticates with Supabase at startup. This logic is handled in `lib/main.dart` using the environment variables:
+
+```dart
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // Load environment variables
+  await dotenv.load(fileName: ".env");
+
+  // Initialize Supabase
+  await Supabase.initialize(
+    url: dotenv.env['SUPABASE_URL'] ?? '',
+    anonKey: dotenv.env['SUPABASE_ANON_KEY'] ?? '',
+  );
+
+  runApp(const MyApp());
+}
+```
