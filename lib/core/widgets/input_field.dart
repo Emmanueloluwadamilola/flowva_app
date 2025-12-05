@@ -4,33 +4,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class InputField extends StatefulWidget {
-  const InputField(
-      {super.key,
-      required this.controller,
-      required this.placeholder,
-      required this.label,
-      this.isPhone = false,
-      this.enterPressed,
-      this.fieldFocusNode,
-      this.nextFocusNode,
-      this.additionalNote,
-      this.onChanged,
-      this.formatter,
-      this.maxLines = 1,
-      this.minLines = 1,
-      this.validationMessage,
-      this.textInputAction = TextInputAction.next,
-      this.textInputType = TextInputType.text,
-      this.password = false,
-      this.isReadOnly = false,
-      this.smallVersion = true,
-      this.suffix,
-      this.onTap,
-      this.prefix,
-      this.maxLength,
-      this.validationColor = Colors.transparent,
-      this.fontSize = 14,
-      this.height = 50});
+  const InputField({
+    super.key,
+    required this.controller,
+    required this.placeholder,
+    required this.label,
+    this.isPhone = false,
+    this.enterPressed,
+    this.fieldFocusNode,
+    this.nextFocusNode,
+    this.additionalNote,
+    this.onChanged,
+    this.formatter,
+    this.maxLines = 1,
+    this.minLines = 1,
+    this.validationMessage,
+    this.textInputAction = TextInputAction.next,
+    this.textInputType = TextInputType.text,
+    this.password = false,
+    this.isReadOnly = false,
+    this.smallVersion = true,
+    this.suffix,
+    this.onTap,
+    this.prefix,
+    this.maxLength,
+    this.validationColor = Colors.transparent,
+    this.fontSize = 14,
+    this.height = 50,
+  });
   final TextEditingController? controller;
   final TextInputType textInputType;
   final bool password;
@@ -77,16 +78,17 @@ class _InputFieldState extends State<InputField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-            height: widget.height,
-            alignment: Alignment.centerLeft,
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            decoration: BoxDecoration(
-                color: white,
-                border: Border.all(color: Color(0xFFCDCDCD)),
-                borderRadius: BorderRadius.circular(16)),
-            child:
-                Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-              //prefix,
+          height: widget.height,
+          alignment: Alignment.centerLeft,
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          decoration: BoxDecoration(
+            color: white,
+            border: Border.all(color: Color(0xFFCDCDCD)),
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
               Expanded(
                 child: TextField(
                   controller: widget.controller,
@@ -112,27 +114,35 @@ class _InputFieldState extends State<InputField> {
                   obscureText: isPassword,
                   readOnly: widget.isReadOnly,
                   style: TextStyle(
-                    fontFamily: 'manrope', fontSize: 14, color: textMedium
+                    fontFamily: 'manrope',
+                    fontSize: 14,
+                    color: textMedium,
                   ),
                   decoration: InputDecoration(
-                      contentPadding:
-                          const EdgeInsets.only(left: 5, top: 12, bottom: 10),
-                      hintText: widget.placeholder,
-                      counterText: '',
-                      border: InputBorder.none,
-                      prefixIcon: widget.prefix,
-                      labelStyle: const TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 10,
-                      ),
-                      hintStyle: TextStyle(
-                    fontFamily: 'manrope', fontSize: 12, color: textLight
-                  ),),
+                    contentPadding: const EdgeInsets.only(
+                      left: 5,
+                      top: 12,
+                      bottom: 10,
+                    ),
+                    hintText: widget.placeholder,
+                    counterText: '',
+                    border: InputBorder.none,
+                    prefixIcon: widget.prefix,
+                    labelStyle: const TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 10,
+                    ),
+                    hintStyle: TextStyle(
+                      fontFamily: 'manrope',
+                      fontSize: 12,
+                      color: textLight,
+                    ),
+                  ),
                 ),
               ),
               Row(
                 children: [
-                  const SizedBox(height: 10,),
+                  const SizedBox(height: 10),
                   widget.suffix ??
                       GestureDetector(
                         onTap: () => setState(() {
@@ -158,18 +168,19 @@ class _InputFieldState extends State<InputField> {
                               ),
                       ),
                 ],
-              )
-            ])),
-        const SizedBox(height:  5),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 5),
         if (widget.validationMessage != null)
           Padding(
             padding: const EdgeInsets.only(top: 0),
             child: SmallText(
-             text:  widget.validationMessage!,
+              text: widget.validationMessage!,
               fontColor: Colors.red,
             ),
-          )
-      
+          ),
       ],
     );
   }

@@ -1,4 +1,3 @@
-// SVG icons
 const icAppLogo = 'assets/svg/app_logo.svg';
 const icBacgroundLogo = 'assets/svg/background_logo.svg';
 const icGoogle = 'assets/svg/google.svg';
@@ -8,9 +7,6 @@ const icCopy = 'assets/svg/copy.svg';
 const icPerson = 'assets/svg/person.svg';
 const icMultiPerson = 'assets/svg/multi_person.svg';
 
-
-
-// PNG images
 const imgLoginBackground = 'assets/images/login_background.png';
 const imgHomeOverlay = 'assets/images/home_overlay.png';
 const imgNewHomeOverlay = 'assets/images/new_home_overlay.png';

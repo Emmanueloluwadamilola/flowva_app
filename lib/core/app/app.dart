@@ -11,31 +11,31 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return      AnnotatedRegion<SystemUiOverlayStyle>(
-            value: SystemUiOverlayStyle(
-              // systemNavigationBarColor: primaryColor,
-              statusBarColor: Colors.transparent,
-              statusBarIconBrightness:  Brightness.dark
-                ,
-            ),
-         
-            //     ? SystemUiOverlayStyle.dark
-            //     : SystemUiOverlayStyle.light,
-            child: MaterialApp(
-              title: 'Flowva',
-            
-              // navigatorKey: navigator,
-              // navigatorObservers: [routeObserver],
-              debugShowCheckedModeBanner: false,
-             initialRoute: SplashScreen.id,
-           routes: {SplashScreen.id: (context) => SplashScreen(), 
-           LoginScreen.id : (context) => LoginScreen(),
-           SignUpScreen.id: (context) => SignUpScreen(),
-           ForgotPasswordScreen.id: (context) => ForgotPasswordScreen(),
-           HomeScreen.id: (context) => HomeScreen()
-           },
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
+      ),
+      child: MaterialApp(
+        title: 'Flowva',
+        debugShowCheckedModeBanner: false,
+        initialRoute: SplashScreen.id,
+        builder: (context, child) {
+          return Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 500),
+              child: child!,
             ),
           );
-      ;
+        },
+        routes: {
+          SplashScreen.id: (context) => const SplashScreen(),
+          LoginScreen.id: (context) => const LoginScreen(),
+          SignUpScreen.id: (context) => const SignUpScreen(),
+          ForgotPasswordScreen.id: (context) => const ForgotPasswordScreen(),
+          HomeScreen.id: (context) => const HomeScreen(),
+        },
+      ),
+    );
   }
 }
