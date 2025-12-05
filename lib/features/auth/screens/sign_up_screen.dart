@@ -26,7 +26,9 @@ class SignUpScreen extends StatelessWidget {
           width: double.infinity,
           height: double.infinity,
           decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage(imgLoginBackground)),
+            image: DecorationImage(
+              fit: BoxFit.fitWidth,
+              image: AssetImage(imgLoginBackground)),
           ),
           child: Align(
             alignment: Alignment.bottomCenter,
